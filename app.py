@@ -12,11 +12,11 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 def get_gemini_response(input):
     model= genai.GenerativeModel("gemini-pro")
     response= model.generate_content(input)
-    return json.load(response.text)
+    return response.text
 
 
 def input_pdf_text(uploaded_file):
-    reader=pdf.PdfFileReader(uploaded_file)
+    reader=pdf.PdfReader(uploaded_file)
     text=""
     for page in range(len(reader.pages)):
         page= reader.pages[page]
